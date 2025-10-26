@@ -1,0 +1,78 @@
+# Perl build and install files
+blib/
+Build
+_build/
+Makefile
+Makefile.old
+pm_to_blib
+cover_db/
+Build.bat
+MYMETA.*
+META.json
+META.yml
+MANIFEST.bak
+MANIFEST.SKIP
+
+# Perl module build outputs
+*.bs
+*.o
+*.obj
+*.so
+*.dll
+*.a
+*.lib
+*.lo
+
+# Local libraries
+local/
+extlib/
+vendor/
+fatlib/
+inc/
+
+# CPAN modules and distribution archives
+*.tar.gz
+*.zip
+*.tgz
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+
+# Perl test and coverage files
+nytprof.out
+nytprof/
+Devel-*
+*.tst
+*.gcov
+*.gcda
+*.gcno
+
+# Temporary files created by scripts or modules
+*.pid
+*.lock
+*.db
+*.sqlite
+*.json.tmp
+*.cache
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.iml
+*.kate-swp
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.local
