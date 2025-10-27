@@ -5,11 +5,9 @@ use feature 'say';
 use NVMPL::Config;
 use File::Spec;
 use File::Basename;
-
-# Haven't written these yet
-# use NVMPL::Installer;
-# use NVMPL::Switcher;
-# use NVMPL::Utils;
+use NVMPL::Installer;
+use NVMPL::Switcher;
+use NVMPL::Utils;
 
 my $CONFIG;
 
