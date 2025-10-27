@@ -68,7 +68,7 @@ sub _merge_config {
     open my $fh, '<', $file or do {
         warn "Warning: could not open $file: $!\n";
         return;
-    }
+    };
 
     local $/;
     my $content = <$fh>;
@@ -83,7 +83,7 @@ sub _merge_config {
             my ($key, $val) = split /=/, $line, 2;
             $key =~ s/^\s+|\s+$//g;
             $val =~ s/^\s+|\s+$//g;
-            $data=>{$key} = $val if defined $key && defined $val;
+            $data->{$key} = $val if defined $key && defined $val;
         }
     }
 

@@ -44,6 +44,7 @@ sub dispatch {
     } else {
         say "Unknown command '$command' . Try 'nvm-pl --help'";
         exit 1;
+    }
 }
 
 # ---------------------------------------------------------

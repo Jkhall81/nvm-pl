@@ -44,7 +44,7 @@ sub use_version {
             or die "[nvm-pl] Failed to create symlink: $!";
     }
 
-    say "[nvm-pl] Active version is now $vstag";
+    say "[nvm-pl] Active version is now $vtag";
     say "To use it in your shell, run:";
     if ($^O =~ /MSWin/) {
         say " set PATH=$current_link//bin;%PATH%";

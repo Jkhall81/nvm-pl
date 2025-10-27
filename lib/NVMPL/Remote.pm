@@ -16,7 +16,7 @@ use NVMPL::Utils qw(log_info log_warn log_error);
 
 sub fetch_remote_list {
     my $cfg = NVMPL::Config->load();
-    my $mirror = $cgf->{mirror_url};
+    my $mirror = $cfg->{mirror_url};
     my $install_dir = $cfg->{install_dir};
     my $cachefile = File::Spec->catfile($install_dir, 'node_index_cache.json');
     my $ttl = $cfg->{cache_ttl};
@@ -25,7 +25,7 @@ sub fetch_remote_list {
     my $use_cache = 0;
 
     if (-f $cachefile) {
-        my $age = time - (stat($cachefileLL))[9];
+        my $age = time - (stat($cachefile))[9];
         if ($age < $ttl) {
             $use_cache = 1;
             log_info("Using cached node index ($cachefile)");
