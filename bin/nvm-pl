@@ -34,7 +34,7 @@ Commands:
 
 Global Options:
     -h, --help              Show this help message
-    -v, --version           Show nmv-pl version
+    -v, --version           Show nvm-pl version
 
 Examples:
     nvm-pl install 22.3.0
