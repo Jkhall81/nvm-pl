@@ -8,6 +8,7 @@ use File::Basename;
 use NVMPL::Installer;
 use NVMPL::Switcher;
 use NVMPL::Utils;
+use NVMPL::Remote;
 
 my $CONFIG;
 
@@ -42,8 +43,7 @@ sub dispatch {
         $commands{$command}->(@args);
     } else {
         say "Unknown command '$command' . Try 'nvm-pl --help'";
-        exit1;
-    }
+        exit 1;
 }
 
 # ---------------------------------------------------------
@@ -52,26 +52,26 @@ sub dispatch {
 
 sub _install {
     my ($ver) = @_;
-    say "[nvm-pl] Installing Node.js version: $ver";
-    say "Mirror: " . NVMPL::Config::get('mirror_url');
-    say "Install path: " . NVMPL::Config::get('install_dir');
+    NVMPL::Installer::install_version($ver);
 }
 
 sub _use {
     my ($ver) = @_;
-    say "[nvm-pl] Activating Node.js version: $ver";
+    NVMPL::Switcher::user_version($ver);
 }
 
 sub _ls {
-    say "[nvm-pl] Listing installed Node.js versions (stub)";
+    NVMPL::Switcher::list_installed();
 }
 
 sub _ls_remote {
-    say "[nvm-pl] Listing available Node.js versions (stub)";
+    my @args = @_;
+    my $filter = grep { $_ eq '--lts' } @args ? 1 : 0;
+    NVMPL::Remote::List_remote_versions(lts => $filter);
 }
 
 sub _current {
-    say "[nvm-pl] Showing current active Node.js version (stub)";
+    NVMPL::Switcher::show_current();
 }
 
 sub _uninstall {
