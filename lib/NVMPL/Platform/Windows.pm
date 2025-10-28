@@ -5,7 +5,7 @@ use feature 'say';
 use File::Spec;
 use File::Path qw(make_path remove_tree);
 use File::Copy qw(move);
-use Archive::Zip qw(":ERROR_CODES :CONSTANTS);
+use Archive::Zip qw(AZ_OK);
 use NVMPL::Utils qw(log_info log_warn log_error);
 
 # ---------------------------------------------------------
@@ -85,10 +85,9 @@ sub extract_zip {
 # ---------------------------------------------------------
 
 sub node_bin_path {
-    my ($base_install_dir)@_;
+    my ($base_install_dir) = @_;
     return File::Spec->catfile($base_install_dir, 'versions', 'current', 'bin');
 }
-
 
 # ---------------------------------------------------------
 # Print PowerShell snippet to set PATH
@@ -96,7 +95,7 @@ sub node_bin_path {
 
 sub export_path_snippet {
     my ($base_install_dir) = @_;
-    my $bin = node_bin_path($base_install_dir);\
+    my $bin = node_bin_path($base_install_dir);
     say 'To use this Node version in PowerShell, run:';
     say " \$Env:PATH = \"$bin;\" + \$Env:PATH";
     say '';
