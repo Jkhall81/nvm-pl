@@ -58,7 +58,7 @@ sub _install {
 
 sub _use {
     my ($ver) = @_;
-    NVMPL::Switcher::user_version($ver);
+    NVMPL::Switcher::use_version($ver);
 }
 
 sub _ls {
@@ -68,7 +68,7 @@ sub _ls {
 sub _ls_remote {
     my @args = @_;
     my $filter = grep { $_ eq '--lts' } @args ? 1 : 0;
-    NVMPL::Remote::List_remote_versions(lts => $filter);
+    NVMPL::Remote::list_remote_versions(lts => $filter);
 }
 
 sub _current {

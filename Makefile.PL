@@ -19,4 +19,10 @@ WriteMakefile(
         'Term::ANSIColor'       => 0,
         'Getopt::Long'          => 0,
     },
+
+    BUILD_REQUIRES => {
+        'Test::More'            => 0,
+        'Test::MockModule'      => 0,
+        'Capture::Tiny'         => 0,
+    },
 );
