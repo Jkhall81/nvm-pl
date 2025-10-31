@@ -13,7 +13,7 @@ sub init_snippet {
     return <<'CMD';
 :: nvm-pl cmd.exe integration
 if exists "%USERPROFILE%\.nvm-pl\install\versions\current\bin" (
-    set PATH=%USERPROFILES%\.nvm-pl\install\versions\current\bin;%PATH%
+    set PATH=%USERPROFILE%\.nvm-pl\install\versions\current\bin;%PATH%
 )
 CMD
 }

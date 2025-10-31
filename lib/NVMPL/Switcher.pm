@@ -16,7 +16,7 @@ sub use_version {
     my ($version) = @_;
     unless ($version) {
         say "Usage: nvm-pl use <version>";
-        exit 1;
+        return 1;
     }
 
     $version =~ s/^V//;
@@ -30,7 +30,7 @@ sub use_version {
 
     unless(-d $target_dir) {
         say "[nvm-pl] Version $vtag is not installed.";
-        exit 1;
+        return 1;
     }
 
     if (-l $current_link || -d $current_link) {
@@ -51,6 +51,8 @@ sub use_version {
     } else {
         say " export PATH=\"$current_link/bin:\$PATH\"";
     }
+
+    return 0;
 }
 
 

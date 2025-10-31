@@ -9,6 +9,7 @@ use Archive::Tar;
 use Archive::Zip;
 use JSON::PP qw(decode_json);
 use NVMPL::Config;
+use NVMPL::Utils qw(detect_platform);
 
 # ---------------------------------------------------------
 # Public entry point
@@ -22,6 +23,11 @@ sub install_version {
     }
 
     $version =~ s/^V//;
+
+    unless ($version =~ /^\d+\.\d+\.\d+$/) {
+        die "Invalid version format. Use X.Y.Z (e.g., 22.3.0)\n";
+    }
+    
     my $vtag = "v$version";
 
     my $cfg = NVMPL::Config->load();
@@ -29,11 +35,11 @@ sub install_version {
     my $install_dir = $cfg->{install_dir};
     my $downloads = File::Spec->catdir($install_dir, 'downloads');
     my $versions = File::Spec->catdir($install_dir, 'versions');
-    my $cachefile = File::Spec->catfile($install_dir, 'node_index_cache.json');
 
-    my $os = $^O;
+    my $platform = detect_platform();
+    my $os = _map_platform_to_node_os($platform);
     my $arch = _detect_arch();
-    my $ext = $os =~ /MSWin/ ? 'zip' : 'tar.xz';
+    my $ext = $platform eq 'windows' ? 'zip' : 'tar.xz';
 
     make_path($downloads) unless -d $downloads;
     make_path($versions) unless -d $versions;
@@ -52,7 +58,7 @@ sub install_version {
 
     unless (-f $download_path) {
         my $ua = HTTP::Tiny->new;
-        my $resp = $ua->mirror($url, $download_path);
+        my $resp = _download_file($url, $download_path);
         die "Download failed: $resp->{status} $resp->{reason}\n"
             unless $resp->{success};
         say "[nvm-pl] Saved to $download_path";
@@ -68,14 +74,11 @@ sub install_version {
         $zip->read($download_path) == 0 or die "Failed to read zip\n";
         $zip->extractTree('', "$target_dir/");
     } else {
-        my $tar = Archive::Tar->new();
-        $tar->read($download_path, 1);
-        $tar->extract();
+        _should_extract_with_tar($download_path, $target_dir);
     }
 
     say "[nvm-pl] Node $vtag installed successfully.";
 }
-
 
 # ---------------------------------------------------------
 # Helpers
@@ -88,6 +91,28 @@ sub _detect_arch {
     return 'arm64' if $arch =~ /arm64|aarch64/i;
     return 'x86' if $arch =~ /i[3456]86/;
     return $arch;
+}
+
+sub _map_platform_to_node_os {
+    my ($platform) = @_;
+    my %map = (
+        windows => 'win',
+        macos   => 'darwin',
+        linux   => 'linux',
+    );
+    return $map{$platform} || $platform;
+}
+
+sub _should_extract_with_tar {
+    my ($download_path, $target_dir) = @_;
+    system("tar", "xf", $download_path, "-C", $target_dir) == 0
+        or die "Extraction failed: $?";
+}
+
+sub _download_file {
+    my ($url, $path) = @_;
+    my $ua = HTTP::Tiny->new;
+    return $ua->mirror($url, $path);
 }
 
 1;

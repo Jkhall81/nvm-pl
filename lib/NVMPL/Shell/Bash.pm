@@ -9,7 +9,7 @@ sub update_path {
     say "export PATH=\"$bin_path:\$PATH\"";
 }
 
-sub init_snipper {
+sub init_snippet {
     return <<'BASH';
 if [ -d "$HOME/.nvm-pl/install/versions/current/bin" ]; then
     export PATH="$HOME/.nvm-pl/install/versions/current/bin:$PATH"

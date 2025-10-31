@@ -18,11 +18,15 @@ WriteMakefile(
         'Archive::Zip'          => 0,
         'Term::ANSIColor'       => 0,
         'Getopt::Long'          => 0,
+        'File::Path'            => 0,
+        'File::Spec'            => 0,
+        'File::Basename'        => 0,
     },
 
     BUILD_REQUIRES => {
         'Test::More'            => 0,
         'Test::MockModule'      => 0,
+        'Test::Exception'       => 0,
         'Capture::Tiny'         => 0,
     },
 );
