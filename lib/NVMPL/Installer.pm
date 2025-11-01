@@ -22,7 +22,7 @@ sub install_version {
         exit 1;
     }
 
-    $version =~ s/^V//;
+    $version =~ s/^V//i;
 
     unless ($version =~ /^\d+\.\d+\.\d+$/) {
         die "Invalid version format. Use X.Y.Z (e.g., 22.3.0)\n";

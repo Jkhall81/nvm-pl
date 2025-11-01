@@ -79,7 +79,7 @@ sub list_remote_versions {
     foreach my $r (@filtered) {
         my $v = $r->{version};
         my $lts = $r->{lts} ? "(LTS: $r->{lts})" : "";
-        say " $r $lts";
+        say " $v $lts";
     }
 }
 
