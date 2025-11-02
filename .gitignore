@@ -1,17 +1,25 @@
 # Perl build and install files
 blib/
-Build
 _build/
+Build/
+pm_to_blib
+*.tar.gz
+
+# Makefile and build artifacts
 Makefile
 Makefile.old
-pm_to_blib
-cover_db/
 Build.bat
+
+# CPAN metadata (generated files)
 MYMETA.*
 META.json
 META.yml
+
+# Backup files
 MANIFEST.bak
-MANIFEST.SKIP
+*.bak
+*.old
+*.tmp
 
 # Perl module build outputs
 *.bs
@@ -23,41 +31,30 @@ MANIFEST.SKIP
 *.lib
 *.lo
 
-# Local libraries
+# Local libraries and dependencies
 local/
 extlib/
 vendor/
 fatlib/
 inc/
 
-# CPAN modules and distribution archives
-*.tar.gz
-*.zip
-*.tgz
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
-*.bak
-*.old
-
-# Perl test and coverage files
+# Test and coverage files
+cover_db/
 nytprof.out
 nytprof/
-Devel-*
 *.tst
 *.gcov
 *.gcda
 *.gcno
 
-# Temporary files created by scripts or modules
+# Logs and temporary files
+*.log
+*.swp
+*.swo
 *.pid
 *.lock
 *.db
 *.sqlite
-*.json.tmp
 *.cache
 
 # Editor and IDE files
@@ -76,3 +73,7 @@ Thumbs.db
 # Local environment files
 .env
 .env.local
+
+# project-specific files
+install/              # Your install directory with downloaded Node.js versions
+nvm-pl.conf           # User config file (if it contains local paths)

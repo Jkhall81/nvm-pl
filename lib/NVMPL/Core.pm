@@ -8,6 +8,7 @@ use NVMPL::Uninstaller;
 use NVMPL::Switcher;
 use NVMPL::Remote;
 
+our $VERSION = '0.1.0';
 my $CONFIG;
 
 # ---------------------------------------------------------
