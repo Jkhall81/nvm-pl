@@ -1,5 +1,4 @@
 bin/nvm-pl
-copy.pl
 install/node_index_cache.json
 lib/NVMPL/Config.pm
 lib/NVMPL/Core.pm
