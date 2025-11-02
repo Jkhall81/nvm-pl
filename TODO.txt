@@ -1,0 +1,56 @@
+TODO: MIGRATION COMMAND FEATURE
+================================
+
+HIGH PRIORITY:
+- [ ] Add `migrate` command to Core.pm dispatch table
+- [ ] Create NVMPL::Migrate module
+- [ ] Add migration command to help text
+
+MIGRATION MODULE FEATURES:
+- [ ] Detect existing Node.js installations:
+      - System package manager (apt, yum, brew)
+      - Other version managers (nvm, fnm, asdf)
+      - Direct downloads/installations
+- [ ] Show migration plan to user
+- [ ] Backup current Node.js versions if possible
+- [ ] Provide uninstall instructions for existing installations
+- [ ] Option to auto-migrate versions from nvm if detected
+
+COMMAND OPTIONS:
+- [ ] `nvm-pl migrate check` - Just detect and report
+- [ ] `nvm-pl migrate dry-run` - Show what would be migrated
+- [ ] `nvm-pl migrate execute` - Actually perform migration
+- [ ] `--backup` - Backup existing installations first
+- [ ] `--force` - Skip confirmation prompts
+
+DETECTION LOGIC:
+- [ ] Check common Node.js installation paths:
+      - /usr/bin/node, /usr/local/bin/node
+      - ~/.nvm/versions/node/
+      - ~/.fnm/node/
+      - ~/.asdf/installs/nodejs/
+- [ ] Parse version managers' version lists
+- [ ] Detect system package manager installations
+
+SAFETY FEATURES:
+- [ ] Confirm before any destructive actions
+- [ ] Create backup of important Node.js projects
+- [ ] Preserve global npm packages if possible
+- [ ] Rollback plan if migration fails
+
+POST-MIGRATION:
+- [ ] Verify nvm-pl can manage all detected versions
+- [ ] Update shell configuration automatically
+- [ ] Provide summary of migration results
+- [ ] Clean up old installation files
+
+INTEGRATION:
+- [ ] Update README.md with migration instructions
+- [ ] Add migration tests
+- [ ] Handle edge cases (corrupted installations, permission issues)
+
+STRETCH GOALS:
+- [ ] Import global npm packages from old installations
+- [ ] Convert nvm/fnm version aliases to nvm-pl
+- [ ] Batch install all detected versions
+- [ ] Smart version conflict resolution
