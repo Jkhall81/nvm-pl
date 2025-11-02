@@ -5,7 +5,6 @@ use feature 'say';
 use HTTP::Tiny;
 use JSON::PP qw(decode_json);
 use File::Spec;
-use File::Path qw(make_path);
 use NVMPL::Config;
 use NVMPL::Utils qw(log_info log_warn log_error);
 

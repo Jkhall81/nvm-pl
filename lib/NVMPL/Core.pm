@@ -3,12 +3,9 @@ use strict;
 use warnings;
 use feature 'say';
 use NVMPL::Config;
-use File::Spec;
-use File::Basename;
 use NVMPL::Installer;
 use NVMPL::Uninstaller;
 use NVMPL::Switcher;
-use NVMPL::Utils;
 use NVMPL::Remote;
 
 my $CONFIG;

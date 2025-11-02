@@ -4,10 +4,8 @@ use warnings;
 use feature 'say';
 use HTTP::Tiny;
 use File::Spec;
-use File::Path qw(make_path remove_tree);
-use Archive::Tar;
+use File::Path qw(make_path);
 use Archive::Zip;
-use JSON::PP qw(decode_json);
 use NVMPL::Config;
 use NVMPL::Utils qw(detect_platform);
 

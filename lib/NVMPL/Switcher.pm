@@ -3,8 +3,6 @@ use strict;
 use warnings;
 use feature 'say';
 use File::Spec;
-use File::Path qw(make_path);
-use File::Basename;
 use NVMPL::Config;
 
 

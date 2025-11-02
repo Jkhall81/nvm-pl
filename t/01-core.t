@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Test::More;
 use Test::MockModule;
+use feature 'say';
 use FindBin;
 use lib "$FindBin::Bin/../lib";
 
@@ -31,6 +32,7 @@ use NVMPL::Core;
 my $installer = Test::MockModule->new('NVMPL::Installer');
 my $switcher = Test::MockModule->new('NVMPL::Switcher');
 my $remote = Test::MockModule->new('NVMPL::Remote');
+my $uninstaller = Test::MockModule->new('NVMPL::Uninstaller');  # Add uninstaller mock
 
 my %called;
 
@@ -59,8 +61,15 @@ $remote->mock('list_remote_versions', sub {
     return ["v21.0.0", "v22.0.0"];
 });
 
+# Mock the uninstaller to track calls and avoid actual file operations
+$uninstaller->mock('uninstall_version', sub { 
+    $called{uninstall} = 1; 
+    say "[nvm-pl] Uninstalling Node.js version: $_[0] (mock)";
+    return 1;
+});
+
 # We're running 9 tests based on the output
-plan tests => 9;
+plan tests => 10;
 
 # ---------------------------------------------------------
 # 1. Test missing command
@@ -153,5 +162,7 @@ ok($called{current}, 'current command routed correctly');
         fail("uninstall command called exit: $@");
     };
     
-    like($output, qr/Uninstalling Node\.js version/, 'uninstall command prints message');
+    # Updated to match the actual mock output
+    like($output, qr/Uninstalling Node\.js version.*\(mock\)/, 'uninstall command prints message');
+    ok($called{uninstall}, 'uninstall command routed correctly');
 }

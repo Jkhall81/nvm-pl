@@ -5,7 +5,6 @@ use JSON::PP qw(decode_json);
 use File::Spec;
 use File::HomeDir;
 use File::Path qw(make_path);
-use feature 'say';
 
 # Default config locations
 my $SYSTEM_CONF = '/etc/nvm-pl.conf';

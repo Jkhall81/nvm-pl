@@ -6,7 +6,6 @@ use File::Spec;
 use File::Path qw(remove_tree);
 use NVMPL::Config;
 use NVMPL::Switcher;
-use NVMPL::Utils;
 
 # ---------------------------------------------------------
 # Public entry point
