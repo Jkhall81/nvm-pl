@@ -103,7 +103,7 @@ sub _map_platform_to_node_os {
 
 sub _should_extract_with_tar {
     my ($download_path, $target_dir) = @_;
-    system("tar", "xf", $download_path, "-C", $target_dir) == 0
+    system("tar", "xf", $download_path, "-C", $target_dir, "--strip-components=1") == 0
         or die "Extraction failed: $?";
 }
 

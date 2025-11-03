@@ -64,7 +64,7 @@ my $current = File::Spec->catfile($versions_dir, 'current');
 ok(-l $current, 'creates current symlink');
 is(readlink($current), $target, 'symlink points to v18.17.0');
 like($stdout, qr/Active version is now v18\.17\.0/, 'shows success message');
-like($stdout, qr/export PATH/, 'prints shell export command');
+like($stdout, qr/Restart your shell/, 'shows restart instructions');
 
 # --------------------------------------------------------------------
 # Test use_version() - missing version (using Test::Exception)

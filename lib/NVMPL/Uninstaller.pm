@@ -45,7 +45,12 @@ sub uninstall_version {
             NVMPL::Switcher::use_version($alternative);
         } else {
             say "[nvm-pl] No other versions installed. You'll need to manually install another version.";
-            # We'll still proceed with uninstall, but warn the user
+            
+            my $current_link = File::Spec->catfile($versions_dir, 'current');
+        if (-l $current_link) {
+            unlink $current_link or warn "[nvm-pl] Could not remove broken 'current' symlink: $!";
+            say "[nvm-pl] Removed broken 'current' symlink.";
+        }
         }
     }
 
