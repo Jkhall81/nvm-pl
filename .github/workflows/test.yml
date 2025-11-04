@@ -27,10 +27,6 @@ jobs:
       - name: Install dependencies
         run: |
           cpanm --quiet --notest --installdeps .
-          # Windows might need additional modules
-          if [ "$RUNNER_OS" == "Windows" ]; then
-            cpanm --quiet --notest Win32::Job Win32::Process
-          fi
 
       - name: Run tests
         run: |
