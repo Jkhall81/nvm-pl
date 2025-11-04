@@ -3,14 +3,14 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME            => 'NVMPL',
+    NAME            => 'NVM::Perl',
+    DISTNAME        => 'NVM-Perl',
     VERSION_FROM    => 'lib/NVMPL/Core.pm',
     AUTHOR          => 'Jason Hall <jason.kei.hall@gmail.com>',
     ABSTRACT        => 'A Perl-based Node Version Manager',
     LICENSE         => 'perl',
     EXE_FILES       => ['bin/nvm-pl'],
     PREREQ_PM       => {
-        'Test::More'            => 0,
         'JSON::PP'              => 0,
         'HTTP::Tiny'            => 0,
         'File::HomeDir'         => 0,
@@ -36,9 +36,13 @@ WriteMakefile(
         resources   => {
             repository => {
                 type => 'git',
-                url  => 'https://github.com/Jkhall81/nvm-pl',
-                web  => 'https://github.com/Jkhall81/nvm-pl',
+                url  => 'https://github.com/jkhall81/nvm-pl.git',
+                web  => 'https://github.com/jkhall81/nvm-pl',
+            },
+            bugtracker => {
+                web => 'https://github.com/jkhall81/nvm-pl/issues',
             },
         },
     },
+    MIN_PERL_VERSION => '5.008',
 );

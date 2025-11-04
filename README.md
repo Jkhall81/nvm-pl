@@ -24,7 +24,7 @@ A fast, lightweight Perl-based Node.js version manager. Install, switch, and man
 cpanm NVMPL
 
 # Or clone and install manually
-git clone https://github.com/yourusername/nvm-pl.git
+git clone https://github.com/jkhall81/nvm-pl.git
 cd nvm-pl
 cpanm --installdeps .
 sudo make install
@@ -151,7 +151,7 @@ color_output = 1
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/nvm-pl.git
+git clone https://github.com/jkhall81/nvm-pl.git
 cd nvm-pl
 
 # Install dependencies

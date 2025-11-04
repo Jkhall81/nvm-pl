@@ -8,6 +8,33 @@ use NVMPL::Uninstaller;
 use NVMPL::Switcher;
 use NVMPL::Remote;
 
+=head1 NAME
+
+NVMPL::Core - Core dispatch module for nvm-pl Node.js version manager
+
+=head1 VERSION
+
+Version 0.1.0
+
+=head1 SYNOPSIS
+
+    use NVMPL::Core;
+    NVMPL::Core::dispatch('install', '25.1.0');
+
+=head1 DESCRIPTION
+
+Core command dispatcher for nvm-pl, a Perl-based Node.js version manager.
+
+=head1 METHODS
+
+=head2 dispatch
+
+    NVMPL::Core::dispatch($command, @args);
+
+Dispatch commands to appropriate modules.
+
+=cut
+
 our $VERSION = '0.1.0';
 my $CONFIG;
 
