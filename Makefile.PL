@@ -27,7 +27,8 @@ WriteMakefile(
         'Test::MockModule'      => 0,
         'Test::Exception'       => 0,
         'File::Temp'            => 0,
-        'FindBin'  
+        'FindBin'               => 0,
+        'Capture::Tiny'         => 0, 
     },
 
     META_MERGE     => {
