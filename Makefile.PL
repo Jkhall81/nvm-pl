@@ -3,8 +3,8 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME            => 'NVM::Perl',
-    DISTNAME        => 'NVM-Perl',
+    NAME            => 'App::NVM',
+    DISTNAME        => 'App-NVM',
     VERSION_FROM    => 'lib/NVMPL/Core.pm',
     AUTHOR          => 'Jason Hall <jason.kei.hall@gmail.com>',
     ABSTRACT        => 'A Perl-based Node Version Manager',
@@ -33,6 +33,11 @@ WriteMakefile(
 
     META_MERGE     => {
         'meta-spec' => { version => 2 },
+        provides    => {
+            'NVM::Perl' => {
+                file    => 'lib/NVM/Perl.pm',
+            },
+        },
         resources   => {
             repository => {
                 type => 'git',
